@@ -69,5 +69,3 @@ resource "openstack_compute_floatingip_associate_v2" "this" {
   floating_ip = openstack_networking_floatingip_v2.this[count.index].address
   instance_id = openstack_compute_instance_v2.this.id
 }
-
-# vim: ft=tf

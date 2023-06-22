@@ -17,5 +17,3 @@ output "instance_state" {
   description = "The state of the instance. One of: `pending`, `running`, `shutting-down`, `terminated`, `stopping`, `stopped` or `error`"
   value       = try(openstack_compute_instance_v2.this.power_state, "")
 }
-
-# vim: ft=tf
