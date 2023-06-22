@@ -50,10 +50,10 @@ variable "block_device_delete_on_termination" {
   default     = true
 }
 
-variable "server_groups_ids" {
-  description = "IDs of server groups"
-  type        = list(string)
-  default     = []
+variable "scheduler_hints" {
+  description = "A map of scheduler hints to use"
+  type        = any
+  default     = {}
 }
 
 variable "ports" {

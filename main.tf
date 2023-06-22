@@ -20,10 +20,11 @@ resource "openstack_compute_instance_v2" "this" {
   }
 
   dynamic "scheduler_hints" {
-    for_each = var.server_groups_ids
+    for_each = length(var.scheduler_hints) > 0 ? [1] : []
 
     content {
-      group = scheduler_hints.value
+      group = try(scheduler_hints.value.group, null)
+      query = try(scheduler_hints.value.query, null)
     }
   }
 
