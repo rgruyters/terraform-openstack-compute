@@ -56,8 +56,10 @@ module "complete_instance" {
   key_pair_name     = openstack_compute_keypair_v2.complete.name
   availability_zone = data.openstack_compute_availability_zones_v2.all.names[0]
   image_id          = data.openstack_images_image_v2.ubuntu.id
-  server_groups_ids = [openstack_compute_servergroup_v2.www.id]
   is_public         = true
+  scheduler_hints   = {
+    group = [openstack_compute_servergroup_v2.www.id]
+  }
 
   tags = {
     Environment = "dev"
